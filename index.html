@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <meta charset="utf-8">
-    <link href="default.css" rel="stylesheet" type="text/css">
-    <title></title>
-  </head>
-  <body>
-    <div class="container" id="banner">
-      <div class="row">
-        <div class="col-md-6" id="journal-div">
-          <div class="input-group">
-            <input type="textarea">
-  </body>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <link href="default.css" rel="stylesheet" type="text/css">
+  <title></title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="banner-div">
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container" id="input-area">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-6" id="journal-div">
+              <textarea class="form-control" rows="10" id="journal"></textarea>
+              <button class="btn btn-default" type="button" id="post-button">Post</button>
+            </div>
+            <div class="col-md-6" id="previous-entries">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="default.js"></script>
+</body>
 </html>
