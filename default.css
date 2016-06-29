@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 #banner-div {
   background-image: url(notebook2.jpg);
   width: auto;
