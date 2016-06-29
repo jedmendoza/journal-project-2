@@ -1,9 +1,8 @@
-
-
-
 var theJournal = document.getElementById('journal');
 var submitButton = document.getElementById('post-button');
-// var content = [];
+var deleteButton = document.getElementById('destroy');
+var journalDiv = document.getElementById('journalDiv');
+
 
 
 submitButton.addEventListener('click', function(e) {
@@ -11,6 +10,11 @@ submitButton.addEventListener('click', function(e) {
   thePost.entry = theJournal.value;
   thePost.user = 'jed';
   thePost.time = Date.now();
+  if (deleteButton.checked) {
+    thePost.delete = 'true'
+  } else {
+    thePost.delete = 'false'
+  }
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/posts/' + 'jed');
   xhr.setRequestHeader('content-type', 'application/json');
@@ -18,11 +22,7 @@ submitButton.addEventListener('click', function(e) {
 
   entries();
 
-  // xhr.addEventListener('load', function() {
-  //   var response = xhr.response
-  // })
-
-})
+});
 
 function entries() {
   var xhr = new XMLHttpRequest();
@@ -38,7 +38,6 @@ function entries() {
       var oldPost = document.createElement('p');
       oldPost.textContent = entry.entry;
       area.appendChild(oldPost);
-
     })
   })
 }

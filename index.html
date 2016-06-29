@@ -7,14 +7,17 @@
   <title></title>
 </head>
 <body>
+  <!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <div class="navbar-header"> -->
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div id="banner-div">
+        </div>
       </div>
     </div>
   </div>
-</div>
   <div class="container" id="input-area">
     <div class="row">
       <div class="col-md-12">
@@ -22,15 +25,22 @@
           <div class="panel-body">
             <div class="col-md-6" id="journal-div">
               <textarea class="form-control" rows="10" id="journal"></textarea>
-              <button class="btn btn-default" type="button" id="post-button">Post</button>
-            </div>
-            <div class="col-md-6" id="previous-entries">
+              <span class="input-group-addon">
+                <button class="btn btn-default" type="button" id="post-button">Post</button>
+
+                <label class="btn btn-secondary">
+                  <input type="checkbox" "autocomplete"="off" id="destroy">Self destruct</label>
+                </div>
+                    <div class="col-md-6" id="previous-entries">
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+  <!-- <div class="col-md-6" id="previous-entries">
+  </div> -->
+
   <script src="default.js"></script>
 </body>
 </html>
