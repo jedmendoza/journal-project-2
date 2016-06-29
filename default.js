@@ -36,8 +36,12 @@ function entries() {
     clear(area);
     response.data.forEach(function(entry) {
       var oldPost = document.createElement('p');
+      if (entry.delete === 'false') {
       oldPost.textContent = entry.entry;
       area.appendChild(oldPost);
+    } else {
+      return false
+    }
     })
   })
 }
@@ -47,3 +51,20 @@ function clear(area) {
     area.removeChild(area.firstChild)
   }
 }
+
+// function deleteEntry () {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', '/posts/');
+//   xhr.send()
+//
+//   xhr.addEventListener('load', function() {
+//     var response = JSON.parse(xhr.response);
+//     response.data.forEach(function(post) {
+//       if post.delete === 'true' {
+//         post.data.entry = ''
+//       }
+//     })
+//   })
+//
+//
+// }
