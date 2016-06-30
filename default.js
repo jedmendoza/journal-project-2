@@ -2,8 +2,9 @@ var theJournal = document.getElementById('journal');
 var submitButton = document.getElementById('post-button');
 var deleteButton = document.getElementById('destroy');
 var journalDiv = document.getElementById('journalDiv');
+// var entriesDiv = document.getElementById('previous-entries')
 
-
+// $('#journalModalDiv').modal('toggle')
 
 submitButton.addEventListener('click', function(e) {
   var thePost = {};
@@ -35,15 +36,19 @@ function entries() {
     clear(area);
     console.log(response)
     response.forEach(function(entry) {
+
+      var entryPanel = document.createElement('div');
+      entryPanel.setAttribute('class', 'panel panel-default');
+
+      var entryPanelContent = document.createElement('div');
+      entryPanelContent.setAttribute('class', 'panel-body');
+
       var oldPost = document.createElement('p');
       oldPost.textContent = entry.entry;
-      area.appendChild(oldPost);
-      // if (entry.delete === 'false') {
-      //   oldPost.textContent = entry.entry;
-      //   area.appendChild(oldPost);
-      // } else {
-      //   setTimeout()
-    // }
+
+      area.appendChild(entryPanel);
+      entryPanel.appendChild(entryPanelContent);
+      entryPanelContent.appendChild(oldPost);
     })
   })
 }
@@ -54,20 +59,4 @@ function clear(area) {
   }
 }
 
-window.setInterval(entries, 5000)
-// function deleteEntry () {
-//   var xhr = new XMLHttpRequest();
-//   xhr.open('GET', '/posts/');
-//   xhr.send()
-//
-//   xhr.addEventListener('load', function() {
-//     var response = JSON.parse(xhr.response);
-//     response.data.forEach(function(post) {
-//       if post.delete === 'true' {
-//         post.data.entry = ''
-//       }
-//     })
-//   })
-//
-//
-// }
+window.setInterval(entries, 10000)

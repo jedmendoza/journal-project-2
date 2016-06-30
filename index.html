@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <meta charset="utf-8">
   <link href="default.css" rel="stylesheet" type="text/css">
@@ -9,38 +10,73 @@
 <body>
   <!-- <nav class="navbar navbar-default">
   <div class="container-fluid">
-  <div class="navbar-header"> -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div id="banner-div">
-        </div>
+  <div class="navbar-header">
+  <a class="navbar-brand" href="#">
+  <img alt="brand" src="pen.png">
+</a>
+</div>
+</div>
+</nav> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="banner-div">
       </div>
     </div>
   </div>
-  <div class="container" id="input-area">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="col-md-6" id="journal-div">
-              <textarea class="form-control" rows="10" id="journal"></textarea>
-              <span class="input-group-addon">
-                <button class="btn btn-default" type="button" id="post-button">Post</button>
-
-                <label class="btn btn-secondary">
-                  <input type="checkbox" "autocomplete"="off" id="destroy">Self destruct</label>
-                </div>
-                    <div class="col-md-6" id="previous-entries">
-                </div>
-              </div>
-            </div>
+</div>
+<div class="container" id="input-area">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-12" id="journal-div">
+            <!-- <div class="bd-example">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#journalModalDiv">Penny for your thoughts</button>
+            <div id="journalModalDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="journalModalDiv" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-header">
+            <button type="button" class="close" data-dissmiss="modal" aria-label="Close"><span aria-idden="true">&times;</span></button>
+            <h4 class="modal-title" id="journalModal">To Whom it may Concern</h4>
           </div>
+          <div class="modal-body">
+          <form>
+          <div class="form-group">
+          <textarea class="form-control" id="journal"></textarea>
         </div>
+      </form>
+    </div>
+    <div class="modal-footer"> -->
+    <!-- <button type="button" class="btn btn-primary">Post</button>
+    <input type="checkbox" autocomplete="off" id="destroy">Self Destruct -->
+    <textarea class="form-control" rows="10" id="journal">
+    </textarea>
+  </div>
+    <div class="col-md-12">
+      <div class="btn-group">
+        <span class="input-group-addon">
+          <button class="btn btn-default" type="button" id="post-button">Post</button>
+          <label class="btn btn-secondary">
+            <input type="checkbox" id="destroy">Self destruct
+          </label>
+        </span>
       </div>
-  <!-- <div class="col-md-6" id="previous-entries">
-  </div> -->
 
-  <script src="default.js"></script>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" id="previous-entries">
+</div>
+</div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+<script src="default.js"></script>
+
+
 </body>
 </html>
