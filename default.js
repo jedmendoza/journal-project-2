@@ -31,17 +31,19 @@ function entries() {
 
   xhr.addEventListener('load', function() {
     var response = JSON.parse(xhr.response)
-    console.log(response)
     var area = document.getElementById('previous-entries');
     clear(area);
-    response.data.forEach(function(entry) {
+    console.log(response)
+    response.forEach(function(entry) {
       var oldPost = document.createElement('p');
-      if (entry.delete === 'false') {
       oldPost.textContent = entry.entry;
       area.appendChild(oldPost);
-    } else {
-      return false
-    }
+      // if (entry.delete === 'false') {
+      //   oldPost.textContent = entry.entry;
+      //   area.appendChild(oldPost);
+      // } else {
+      //   setTimeout()
+    // }
     })
   })
 }
@@ -52,6 +54,7 @@ function clear(area) {
   }
 }
 
+window.setInterval(entries, 5000)
 // function deleteEntry () {
 //   var xhr = new XMLHttpRequest();
 //   xhr.open('GET', '/posts/');
