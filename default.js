@@ -6,7 +6,7 @@ var journalDiv = document.getElementById('journalDiv');
 
 // $('#journalModalDiv').modal('toggle')
 
-submitButton.addEventListener('click', function(e) {
+theJournal.addEventListener('keyup', function(e) {
   var thePost = {};
   thePost.entry = theJournal.value;
   thePost.user = 'jed';
@@ -27,11 +27,12 @@ submitButton.addEventListener('click', function(e) {
 
 function entries() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/posts/');
+  xhr.open('GET', '/live/');
   xhr.send()
 
   xhr.addEventListener('load', function() {
     var response = JSON.parse(xhr.response)
+    console.log(response);
     var area = document.getElementById('previous-entries');
     clear(area);
     console.log(response)
@@ -53,10 +54,23 @@ function entries() {
   })
 }
 
-function clear(area) {
-  while(area.firstChild) {
-    area.removeChild(area.firstChild)
-  }
-}
+// var livePost = window.setInterval(getLive, 500);
 
-window.setInterval(entries, 10000)
+// function getLive() {
+//   var xhr = XMLHttpRequest();
+//   xhr.open('GET', '/posts/live/')
+//   xhr.send()
+//
+//   xhr.addEventListener('load', function() {
+//     var response = JSON.parse(xhr.response)
+//     console.log(response);
+//   })
+// }
+
+// function clear(area) {
+//   while(area.firstChild) {
+//     area.removeChild(area.firstChild)
+//   }
+// }
+
+// window.setInterval(entries, 10000)

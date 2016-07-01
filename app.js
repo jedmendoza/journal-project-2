@@ -28,6 +28,26 @@ app.get('/posts/', function(req, res) {
     console.log(valid)
 });
 
+// app.get('/posts/', function(req, res) {
+//   posts.data.forEach(function(entry) {})
+//   res.send();
+// })
 
+// app.post('/live/:user', function(req, res) {
+//   posts.data.push(req.body);
+//   res.send();
+// })
+
+// app.post('/live/', function(req, res) {
+//   posts.data.push(req.body);
+//   res.send()
+// })
+
+// app.get('/posts/', function(req, res) {
+//   var last = posts.data[posts.data.length - 1]
+//     res.json(last);
+//     console.log(last)
+// });
+//create code on front end to open request
 
 app.listen(8080);
