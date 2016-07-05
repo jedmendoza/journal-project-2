@@ -1,12 +1,56 @@
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var app = express();
-var users = require('./users.js');
+// var users = require('./users.js');
 var posts = require('./posts.js');
+var cookieParser = require('cookie-parser');
+
+var sessions = []
+
+app.use(cookieParser());
 
 app.use(jsonParser)
 
 app.use(express.static('./'));
+
+
+
+// if there are no active sessions, create a session
+app.post('/sessions/check/:user', function(req, res) {
+  var activeSessions = {};
+  var sessionid = Date.now();
+
+  //if sessions is empty, make first sessions
+  if (sessions.length < 1) {
+    activeSessions.user = req.params.user;
+    activeSessions.id = sessionid;
+    sessions.push(activeSessions);
+    res.cookie('session', sessionid);
+    console.log('sessions was empty. first session was made');
+    console.log(activeSessions);
+    console.log(sessions);
+    res.send();
+  }
+
+  var matched = false;
+
+  sessions.forEach(function(session) {
+    if (session.user == req.params.user) {
+      console.log(req.params.user + ' ' + 'already has cookie');
+      matched = true
+      res.send();
+    }
+  })
+  if (!matched) {
+    activeSessions.user = req.params.user;
+    activeSessions.id = sessionid;
+    sessions.push(activeSessions);
+    res.cookie('session', sessionid);
+  }
+  res.send();
+  console.log(sessions);
+})
+
 
 // Add a new post for a particular user.
 app.post('/posts/:user', function(req, res) {
@@ -54,26 +98,5 @@ function isValid() {
   return valid;
 }
 
-// app.get('/posts/', function(req, res) {
-//   posts.data.forEach(function(entry) {})
-//   res.send();
-// })
-
-// app.post('/live/:user', function(req, res) {
-//   posts.data.push(req.body);
-//   res.send();
-// })
-
-// app.post('/live/', function(req, res) {
-//   posts.data.push(req.body);
-//   res.send()
-// })
-
-// app.get('/posts/', function(req, res) {
-//   var last = posts.data[posts.data.length - 1]
-//     res.json(last);
-//     console.log(last)
-// });
-//create code on front end to open request
 
 app.listen(8080);

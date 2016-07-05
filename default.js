@@ -23,22 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         journal.textContent = response.entry;
       }
 
-      // TODO XXX(Jed): Add the post to the page.
-        // var livejournal = document.getElementById('livejournal');
-        //
-        // var entryDiv = document.createElement('div');
-        // entryDiv.setAttribute('class', 'panel panel-default');
-        //
-        // var entryBody = document.createElement('div');
-        // entryBody.setAttribute('class', 'panel-body');
-        //
-        // var journalEntry = document.createElement('p');
-        // journalEntry.textContent = response.entry;
-        //
-        // livejournal.appendChild(entryDiv);
-        // entryDiv.appendChild(entryBody);
-        // entryBody.appendChild(journalEntry);
-        makeEntry(response);
+      makeEntry();
     }
   });
 });
@@ -52,12 +37,13 @@ theJournal.addEventListener('keyup', function(e) {
   // Check if this post already has an idea.
   if (!id) {
     thePost.id = Date.now();
+    theJournal.setAttribute('data-id', thePost.id);
   } else {
     thePost.id = id;
   }
 
   thePost.entry = theJournal.value;
-  thePost.user = 'jed';
+  thePost.user = 'jed'
   thePost.time = Date.now();
 
   if (deleteButton.checked) {
@@ -73,6 +59,7 @@ theJournal.addEventListener('keyup', function(e) {
 
   makeEntry(thePost);
 });
+
 function makeEntry(response) {
   var livejournal = document.getElementById('livejournal');
   clear(livejournal)
@@ -90,7 +77,8 @@ function makeEntry(response) {
   entryBody.appendChild(journalEntry);
 
 }
-function entries() {
+
+// function entries() {
   // var xhr = new XMLHttpRequest();
   // xhr.open('GET', '/live/');
   // xhr.send()
@@ -117,7 +105,7 @@ function entries() {
   //     entryPanelContent.appendChild(oldPost);
   //   })
   // })
-}
+// }
 
 // var livePost = window.setInterval(getLive, 500);
 
@@ -138,4 +126,4 @@ function clear(area) {
   }
 }
 
-// window.setInterval(entries, 10000)
+window.setInterval(makeEntry, 10000)
