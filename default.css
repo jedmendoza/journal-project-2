@@ -2,6 +2,18 @@ body {
   background-color: black;
 }
 
+#theForm {
+  margin-top: 50%;
+}
+
+#splash {
+  background-image: url(notebook.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: auto;
+  height: 500px;
+}
+
 #banner-div {
   background-image: url(notebook2.jpg);
   width: auto;

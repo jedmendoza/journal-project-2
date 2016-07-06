@@ -4,10 +4,26 @@ var deleteButton = document.getElementById('destroy');
 var journalDiv = document.getElementById('journalDiv');
 var author = document.getElementById('author')
 
-// All the user to edit the most recent post when the page loads.
+document.addEventListener('click', function(theEvent) {
+  var name = document.getElementById('writer');
+  var author = name.value;
+  console.log(author);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/sessions/check/' + name.value);
+  xhr.send();
+
+  xhr.addEventListener('load', function() {
+    console.log(xhr.responseText);
+  })
+
+})
+
+// Allow the user to edit the most recent post when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
+  var author = document.getElementById('author');
   recent = new XMLHttpRequest();
-  recent.open('GET', '/posts/recent/jed')
+  recent.open('GET', '/posts/recent/' + author.value);
   recent.send()
 
   recent.addEventListener('load', function() {
@@ -35,7 +51,7 @@ theJournal.addEventListener('keyup', function(e) {
   var id = theJournal.getAttribute('data-id');
 
   var thePost = {};
-  // Check if this post already has an idea.
+  // Check if this post already has an id.
   if (!id) {
     thePost.id = Date.now();
     theJournal.setAttribute('data-id', thePost.id);
@@ -54,11 +70,11 @@ theJournal.addEventListener('keyup', function(e) {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/posts/' + 'jed');
+  xhr.open('POST', '/posts/' + thePost.user);
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
 
-  // makeEntry(thePost);
+  makeEntry(thePost);
   console.log(thePost);
 });
 
