@@ -2,6 +2,7 @@ var theJournal = document.getElementById('journal');
 var submitButton = document.getElementById('post-button');
 var deleteButton = document.getElementById('destroy');
 var journalDiv = document.getElementById('journalDiv');
+var author = document.getElementById('author')
 
 // All the user to edit the most recent post when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
@@ -43,7 +44,7 @@ theJournal.addEventListener('keyup', function(e) {
   }
 
   thePost.entry = theJournal.value;
-  thePost.user = 'jed'
+  thePost.user = author.value;
   thePost.time = Date.now();
 
   if (deleteButton.checked) {
@@ -57,10 +58,11 @@ theJournal.addEventListener('keyup', function(e) {
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
 
-  makeEntry(thePost);
+  // makeEntry(thePost);
+  console.log(thePost);
 });
 
-function makeEntry(response) {
+function makeEntry(response, entry) {
   var livejournal = document.getElementById('livejournal');
   clear(livejournal)
   var entryDiv = document.createElement('div');
@@ -126,4 +128,4 @@ function clear(area) {
   }
 }
 
-window.setInterval(makeEntry, 10000)
+// window.setInterval(makeEntry, 10000)

@@ -13,7 +13,9 @@ app.use(jsonParser)
 
 app.use(express.static('./'));
 
+app.get('/login', function(req, res) {
 
+})
 
 // if there are no active sessions, create a session
 app.post('/sessions/check/:user', function(req, res) {
