@@ -2,7 +2,25 @@ body {
   background-color: gray;
 }
 
-#theForm {
+#post1 {
+  height: 200px:
+}
+
+#more-button {
+  margin-right: 50px;
+  margin-bottom: 30px;
+}
+
+#back-to-posts {
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+/*#theForm {
   margin-top: 40%;
 }
 
@@ -19,4 +37,4 @@ body {
   width: auto;
   height: 350px;
   background-repeat: no-repeat;
-}
+}*/
