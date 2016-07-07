@@ -4,29 +4,15 @@ var deleteButton = document.getElementById('destroy');
 var journalDiv = document.getElementById('journalDiv');
 var writer = document.getElementById('writer')
 var writeButton = document.getElementById('writePost');
-
-writeButton.addEventListener('click', function(theEvent) {
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/sessions/check/' + writer.value);
-  xhr.send();
+var newPost = document.getElementById('newPost');
 
 
-
-  xhr.addEventListener('load', function() {
-    console.log(xhr.response);
-
-    $('#login-container').addClass('hidden');
-    $('#bannerContainer').removeClass('hidden');
-    $('#input-area').removeClass('hidden');
-  })
-})
 
 // Allow the user to edit the most recent post when the page loads.
-document.addEventListener('DOMElementChanged', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var author = document.getElementById('author');
   recent = new XMLHttpRequest();
-  recent.open('GET', '/posts/recent/' + writer.value);
+  recent.open('GET', '/posts/recent/user');
   recent.send()
 
   recent.addEventListener('load', function() {
@@ -66,31 +52,66 @@ theJournal.addEventListener('keyup', function(e) {
   // thePost.user = writer.value;
   thePost.time = Date.now();
 
-  if (deleteButton.checked) {
-    thePost.delete = 'true'
-  } else {
-    thePost.delete = 'false'
-  }
+  // if (deleteButton.checked) {
+  //   thePost.delete = 'true'
+  // } else {
+  //   thePost.delete = 'false'
+  // }
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/posts/jed');
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
 
+  makeEntry(thePost);
   console.log(thePost);
 });
+
+newPost.addEventListener('click', function() {
+  var theJournal = document.getElementById('journal');
+
+
+  var thePost = {};
+  // Check if this post already has an id.
+
+  thePost.id = Date.now();
+  theJournal.setAttribute('data-id', thePost.id);
+
+
+  thePost.entry = theJournal.value;
+  // thePost.user = writer.value;
+  thePost.time = Date.now();
+
+  theJournal.value ='';
+
+  // if (deleteButton.checked) {
+  //   thePost.delete = 'true'
+  // } else {
+  //   thePost.delete = 'false'
+  // }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/posts/jed');
+  xhr.setRequestHeader('content-type', 'application/json');
+  xhr.send(JSON.stringify(thePost));
+
+  makeEntry(thePost);
+  console.log(thePost);
+
+})
 
 function makeEntry(response, entry) {
   var livejournal = document.getElementById('livejournal');
   clear(livejournal)
   var entryDiv = document.createElement('div');
   entryDiv.setAttribute('class', 'panel panel-default');
-
+  //
   var entryBody = document.createElement('div');
-  entryBody.setAttribute('class', 'panel-body');
+  entryBody.setAttribute('class', 'panel-body entries');
 
   var journalEntry = document.createElement('p');
   journalEntry.textContent = response.entry;
+
 
   livejournal.appendChild(entryDiv);
   entryDiv.appendChild(entryBody);

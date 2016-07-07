@@ -14,57 +14,65 @@
         <div id="sitename">
           <h1>SnapJournal</h1>
         </div>
-        <div class="row">
-          <div class="col-md-4" id=post1>
-            <div class="panel panel-default">
-              <div class="panel-body">An entry goes here
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4" id=post2>
-            <div class="panel panel-default">
-              <div class="panel-body">An entry goes here
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4" id=post3>
-            <div class="panel panel-default">
-              <div class="panel-body">An entry goes here
-              </div>
-            </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="journalContainer">
+    <div class="row">
+      <div class="col-md-4" id=livejournal>
+        <div class="panel panel-default">
+          <div class="panel-body entries">An entry goes here
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-2 col-md-offset-10">
-            <input class="btn btn-block" type="button" value="More >>" id="more-button">
+      </div>
+      <div class="col-md-4" id=post2>
+        <div class="panel panel-default">
+          <div class="panel-body entries">An entry goes here
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <textarea class="form-control" rows="10"></textarea>
-              </div>
-            </div>
+      </div>
+      <div class="col-md-4" id=post3>
+        <div class="panel panel-default">
+          <div class="panel-body entries">An entry goes here
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-2 col-md-offset-10">
-            <input class="btn btn-block" type="button" value="Back to posts >>" id="back-to-posts">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-body">journal entry goes here
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-10">
+        <input class="btn btn-block" type="button" value="More >>" id="more-button">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <textarea class="form-control" rows="10" id="journal" placeholder="Say something..."></textarea>
+            <input class="btn btn-default" type="button" value="New Post" id="newPost">
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src="default.js"></script>
+  <div class="container" id="readerContainer">
+    <div class="row">
+      <div class="col-md-2 col-md-offset-10">
+        <input class="btn btn-block" type="button" value="Back to posts >>" id="back-to-posts">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body" id="livejournal">journal entry goes here for reader view
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="default.js"></script>
 
 
 </body>

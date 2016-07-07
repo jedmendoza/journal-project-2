@@ -13,8 +13,6 @@ app.use(jsonParser)
 
 app.use(express.static('./'));
 
-
-
 // if there are no active sessions, create a session
 app.post('/sessions/check/:user', function(req, res) {
   var activeSessions = {};
@@ -97,8 +95,8 @@ function isValid() {
 app.listen(8080);
 
 // Return posts that haven't yet expired.
-// app.get('/posts/', function(req, res) {
+app.get('/posts/', function(req, res) {
   // Get all the valid posts.
-  // var valid = isValid();
-  // res.json(valid);
-// });
+  var valid = isValid();
+  res.json(valid);
+});

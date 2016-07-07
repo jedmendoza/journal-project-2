@@ -2,17 +2,21 @@ body {
   background-color: gray;
 }
 
-#post1 {
-  height: 200px:
+.entries {
+  display: block;
+  min-height: 200px;
+  max-height: 200px;
+  height: 200px;
+  overflow: scroll;
 }
 
 #more-button {
   margin-right: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 #back-to-posts {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 
