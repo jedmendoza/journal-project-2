@@ -3,10 +3,10 @@ body {
 }
 
 #theForm {
-  margin-top: 50%;
+  margin-top: 40%;
 }
 
-#splash {
+#login-container {
   background-image: url(notebook.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -14,8 +14,9 @@ body {
   height: 500px;
 }
 
-#banner-div {
+#bannerContainer {
   background-image: url(notebook2.jpg);
   width: auto;
   height: 350px;
+  background-repeat: no-repeat;
 }

@@ -2,28 +2,31 @@ var theJournal = document.getElementById('journal');
 var submitButton = document.getElementById('post-button');
 var deleteButton = document.getElementById('destroy');
 var journalDiv = document.getElementById('journalDiv');
-var author = document.getElementById('author')
+var writer = document.getElementById('writer')
+var writeButton = document.getElementById('writePost');
 
-document.addEventListener('click', function(theEvent) {
-  var name = document.getElementById('writer');
-  var author = name.value;
-  console.log(author);
+writeButton.addEventListener('click', function(theEvent) {
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/sessions/check/' + name.value);
+  xhr.open('POST', '/sessions/check/' + writer.value);
   xhr.send();
 
-  xhr.addEventListener('load', function() {
-    console.log(xhr.responseText);
-  })
 
+
+  xhr.addEventListener('load', function() {
+    console.log(xhr.response);
+
+    $('#login-container').addClass('hidden');
+    $('#bannerContainer').removeClass('hidden');
+    $('#input-area').removeClass('hidden');
+  })
 })
 
 // Allow the user to edit the most recent post when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMElementChanged', function() {
   var author = document.getElementById('author');
   recent = new XMLHttpRequest();
-  recent.open('GET', '/posts/recent/' + author.value);
+  recent.open('GET', '/posts/recent/' + writer.value);
   recent.send()
 
   recent.addEventListener('load', function() {
@@ -60,7 +63,7 @@ theJournal.addEventListener('keyup', function(e) {
   }
 
   thePost.entry = theJournal.value;
-  thePost.user = author.value;
+  // thePost.user = writer.value;
   thePost.time = Date.now();
 
   if (deleteButton.checked) {
@@ -70,11 +73,10 @@ theJournal.addEventListener('keyup', function(e) {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/posts/' + thePost.user);
+  xhr.open('POST', '/posts/jed');
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
 
-  makeEntry(thePost);
   console.log(thePost);
 });
 
@@ -95,48 +97,6 @@ function makeEntry(response, entry) {
   entryBody.appendChild(journalEntry);
 
 }
-
-// function entries() {
-  // var xhr = new XMLHttpRequest();
-  // xhr.open('GET', '/live/');
-  // xhr.send()
-  //
-  // xhr.addEventListener('load', function() {
-  //   var response = JSON.parse(xhr.response)
-  //
-  //   var area = document.getElementById('previous-entries');
-  //   clear(area);
-  //
-  //   response.forEach(function(entry) {
-  //
-  //     var entryPanel = document.createElement('div');
-  //     entryPanel.setAttribute('class', 'panel panel-default');
-  //
-  //     var entryPanelContent = document.createElement('div');
-  //     entryPanelContent.setAttribute('class', 'panel-body');
-  //
-  //     var oldPost = document.createElement('p');
-  //     oldPost.textContent = entry.entry;
-  //
-  //     area.appendChild(entryPanel);
-  //     entryPanel.appendChild(entryPanelContent);
-  //     entryPanelContent.appendChild(oldPost);
-  //   })
-  // })
-// }
-
-// var livePost = window.setInterval(getLive, 500);
-
-// function getLive() {
-//   var xhr = XMLHttpRequest();
-//   xhr.open('GET', '/posts/live/')
-//   xhr.send()
-//
-//   xhr.addEventListener('load', function() {
-//     var response = JSON.parse(xhr.response)
-//     console.log(response);
-//   })
-// }
 
 function clear(area) {
   while(area.firstChild) {

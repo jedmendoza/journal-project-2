@@ -13,16 +13,14 @@ app.use(jsonParser)
 
 app.use(express.static('./'));
 
-app.get('/login', function(req, res) {
 
-})
 
 // if there are no active sessions, create a session
 app.post('/sessions/check/:user', function(req, res) {
   var activeSessions = {};
   var sessionid = Date.now();
 
-  //if sessions is empty, make first sessions
+  //if sessions is empty, make first session
   if (sessions.length < 1) {
     activeSessions.user = req.params.user;
     activeSessions.id = sessionid;
@@ -72,12 +70,7 @@ app.post('/posts/:user', function(req, res) {
   res.send();
 });
 
-// Return posts that haven't yet expired.
-app.get('/posts/', function(req, res) {
-  // Get all the valid posts.
-  var valid = isValid();
-  res.json(valid);
-});
+
 
 // Return the lastest post that isn't expired for this user.
 app.get('/posts/recent/:user', function(req, res) {
@@ -102,3 +95,10 @@ function isValid() {
 
 
 app.listen(8080);
+
+// Return posts that haven't yet expired.
+// app.get('/posts/', function(req, res) {
+  // Get all the valid posts.
+  // var valid = isValid();
+  // res.json(valid);
+// });

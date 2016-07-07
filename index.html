@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.js"   integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo="   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <meta charset="utf-8">
   <link href="default.css" rel="stylesheet" type="text/css">
   <title></title>
 </head>
 <body>
-  <div class="container" id="splash">
+  <div class="container" id="login-container">
     <div class="row">
-      <div class="current" id="initialPage">
         <div class="col-md-4 col-md-offset-4">
           <div class="panel panel-default" id="theForm">
             <div class="panel-body">
               <form>
                 <div class="form-group">
                   <input type="text" class="form-control" id="writer" placeholder="Your Name">
-                  <button class="btn btn-default" type="button" id="readPost">Read</button>
-                  <button class="btn btn-default" type="button" id="writePost">Write</button>
+                  <button class="btn btn-primary btn-block" id="writePost">Write</button>
+                  <button class="btn btn-block" type="button" id="readPost">Read</button>
                 </div>
               </form>
             </div>
@@ -28,45 +27,36 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container hidden" id="bannerContainer">
   <div class="row">
-    <div class="hide">
     <div class="col-md-12">
-      <div id="banner-div" class="journal-entry">
-      </div>
     </div>
   </div>
 </div>
-
-<div class="container" id="input-area">
+<div class="container hidden" id="input-area">
   <div class="row">
-    <div class="hide">
     <div class="col-md-12">
-      <div class="journal-entry">
-        <div class="panel panel-default">
+      <div class="panel panel-default">
           <div class="panel-body">
-            <div class="col-md-12" id="journal-div">
+            <div class="col-md-12">
               <textarea class="form-control" rows="10" id="journal"></textarea>
             </div>
             <div class="col-md-12">
               <div class="btn-group">
                 <span class="input-group-addon">
-                  <input type="text" placeholder="Your name" id="author">
                   <button class="btn btn-default" type="button" id="post-button">Post</button>
                   <label class="btn btn-secondary">
-                    <input type="checkbox" id="destroy">Self destruct
-                  </label>
-                </span>
-              </div>
+                  <input type="checkbox" id="destroy">Self destruct
+                </label>
+              </span>
             </div>
-          </div>
-          <div class="col-md-12">
-
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 <div class="container">
   <div class="row">
@@ -75,7 +65,6 @@
       </div>
     </div>
   </div>
-  <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
   <script src="default.js"></script>
 
 
