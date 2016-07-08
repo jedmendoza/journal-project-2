@@ -61,7 +61,7 @@ theJournal.addEventListener('keyup', function(e) {
   // }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/posts/jed');
+  xhr.open('POST', '/posts/user');
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
 
@@ -97,7 +97,10 @@ newPost.addEventListener('click', function() {
     var div2 = document.createElement('div');
     div2.setAttribute('class', 'panel-body entries');
 
-    var text = document.createElement('p');
+    // var text = document.createElement('p');
+    var text = document.createElement('textarea');
+    text.className = 'form-control';
+    text.rows = '8'
 
     text.textContent = thePost.entry;
 
@@ -142,6 +145,14 @@ newPost.addEventListener('click', function() {
 livePost.addEventListener('click', function() {
   $('#journalContainer').addClass('hidden');
   $('#readerContainer').removeClass('hidden');
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/posts/recent/user')
+  xhr.send();
+
+  xhr.addEventListener('DOMContentLoaded', function() {
+    console.log(xhr.response)
+  })
 });
 
 back.addEventListener('click', function() {
