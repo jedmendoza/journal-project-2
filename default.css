@@ -1,5 +1,12 @@
 body {
   background-color: gray;
+  background-image: url('notebook4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  color: white;
 }
 
 .entries {
