@@ -171,11 +171,6 @@ function makeEntry(response, entry) {
 
 }
 
-$('#journalContainer').on('click', 'div',function(e) {
-  e.preventDefault();
-  console.log( $(this).text());
-})
-
 function clear(area) {
   while(area.firstChild) {
     area.removeChild(area.firstChild)
