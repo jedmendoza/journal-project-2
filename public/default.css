@@ -1,0 +1,28 @@
+body {
+  background-color: gray;
+  background-image: url('notebook4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+}
+
+h1 {
+  color: white;
+}
+
+.entries {
+  display: block;
+  min-height: 200px;
+  max-height: 200px;
+  height: 200px;
+  overflow: scroll;
+}
+
+#more-button {
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
+#back-to-posts {
+  margin-bottom: 20px;
+}
