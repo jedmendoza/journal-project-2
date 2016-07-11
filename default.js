@@ -6,7 +6,7 @@ var writer = document.getElementById('writer')
 var writeButton = document.getElementById('writePost');
 var newPost = document.getElementById('newPost');
 var livePost = document.getElementById('livePost');
-var back = document.getElementById('back-to-posts');
+var back = document.getElementById('backToPosts');
 
 
 
@@ -179,6 +179,11 @@ function makeEntry(response, entry) {
   entryBody.appendChild(journalEntry);
 
 }
+
+$('#journalContainer').on('click', 'div',function(e) {
+  e.preventDefault();
+  console.log( $(this).text());
+})
 
 function clear(area) {
   while(area.firstChild) {
