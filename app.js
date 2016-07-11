@@ -1,3 +1,4 @@
+var cool = require('cool-ascii-faces');
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var app = express();
@@ -91,12 +92,15 @@ function isValid() {
   return valid;
 }
 
+app.get('/cool', function(req, res) {
+  res.send(cool());
+});
 
-app.listen(8080);
+app.listen(5000);
 
 // Return posts that haven't yet expired.
-app.get('/posts/', function(req, res) {
-  // Get all the valid posts.
-  var valid = isValid();
-  res.json(valid);
-});
+// app.get('/posts/', function(req, res) {
+//   // Get all the valid posts.
+//   var valid = isValid();
+//   res.json(valid);
+// });

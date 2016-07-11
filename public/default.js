@@ -11,10 +11,13 @@ var back = document.getElementById('back-to-posts');
 
 
 // Allow the user to edit the most recent post when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
-  var author = document.getElementById('author');
+livePost.addEventListener('click', function(theEvent) {
+
+  // $('#reader-container').removeClass('hidden')
+
+  // var author = document.getElementById('author');
   recent = new XMLHttpRequest();
-  recent.open('GET', '/posts/recent/user');
+  recent.open('GET', '/posts/recent/jed');
   recent.send()
 
   recent.addEventListener('load', function() {
@@ -29,9 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
         journal.setAttribute('data-id', response.id);
         journal.setAttribute('data-user', response.user);
         journal.textContent = response.entry;
+        // console.log(recent.responseText);
+        makeLiveEntry(response);
+        console.log(response.id)
       }
 
-      makeEntry();
+
+    // $('#reader-container').removeClass('hidden')
     }
   });
 });
@@ -51,7 +58,7 @@ theJournal.addEventListener('keyup', function(e) {
   }
 
   thePost.entry = theJournal.value;
-  // thePost.user = writer.value;
+  thePost.user = 'jed';
   thePost.time = Date.now();
 
   // if (deleteButton.checked) {
@@ -133,24 +140,42 @@ newPost.addEventListener('click', function() {
 
 })
 
-livePost.addEventListener('click', function() {
-  $('#journalContainer').addClass('hidden');
-  $('#readerContainer').removeClass('hidden');
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/posts/recent/user')
-  xhr.send();
-
-  xhr.addEventListener('DOMContentLoaded', function() {
-    console.log(xhr.response)
-  })
-});
+// livePost.addEventListener('click', function() {
+//   $('#journalContainer').addClass('hidden');
+//   $('#readerContainer').removeClass('hidden');
+//
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', '/posts/recent/user')
+//   xhr.send();
+//
+//   xhr.addEventListener('DOMContentLoaded', function() {
+//     console.log(xhr.response)
+//   })
+// });
 
 back.addEventListener('click', function() {
-  $('#journalContainer').removeClass('hidden');
-  $('#readerContainer').addClass('hidden');
+  $('#journal-container').removeClass('hidden');
+  $('#reader-container').addClass('hidden');
 });
 
+function makeLiveEntry(response) {
+  var theJournal = document.getElementById('the-journal');
+  // var entryDiv = document.createElement('div');
+  // entryDiv.setAttribute('class', 'panel panel-default');
+  // //
+  // var entryBody = document.createElement('div');
+  // entryBody.setAttribute('class', 'panel-body entries');
+  //
+  var journalEntry = document.createElement('p');
+  journalEntry.textContent = response.entry;
+
+
+  // livejournal.appendChild(entryDiv);
+  // entryDiv.appendChild(entryBody);
+  // entryBody.appendChild(journalEntry);
+  theJournal.appendChild(journalEntry)
+
+}
 
 function makeEntry(response, entry) {
   var livejournal = document.getElementById('livejournal');
