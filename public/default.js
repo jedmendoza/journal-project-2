@@ -7,6 +7,7 @@ var writeButton = document.getElementById('write-post');
 var newPost = document.getElementById('new-post');
 var livePost = document.getElementById('live-post');
 var back = document.getElementById('back-to-posts');
+var previousPosts = document.getElementById('post2');
 
 
 
@@ -46,7 +47,7 @@ theJournal.addEventListener('keyup', function(e) {
   var thePost = {};
   // Check if this post already has an id.
   if (!id) {
-    thePost.id = Date.now();
+    // thePost.id = Date.now();
     theJournal.setAttribute('data-id', thePost.id);
   } else {
     thePost.id = id;
@@ -75,10 +76,8 @@ newPost.addEventListener('click', function() {
   var theJournal = document.getElementById('journal');
   var id = theJournal.getAttribute('data-id');
   var postarea = document.getElementById('post2');
-
   var entries = [];
   var thePost = {};
-
 
   thePost.id = Date.now();
   theJournal.setAttribute('data-id', thePost.id);
@@ -93,13 +92,13 @@ newPost.addEventListener('click', function() {
 
     createNewPost(thePost, entry, postarea);
 
-    console.log(thePost.id)
+    // console.log(thePost.id)
   })
 
   theJournal.value = '';
 
-  console.log(thePost.id);
-  console.log(theJournal)
+  // console.log(thePost.id);
+  // console.log(theJournal)
 
   // if (deleteButton.checked) {
   //   thePost.delete = 'true'
@@ -113,13 +112,21 @@ newPost.addEventListener('click', function() {
   xhr.send(JSON.stringify(thePost));
 })
 
+previousPosts.addEventListener('click', function(e) {
+  if (e.target.type == 'button') {
+    var area = document.getElementById('post2');
+    area.removeChild(area.firstChild)
+  }
+})
 
-back.addEventListener('click', function() {
-  $('#journal-container').removeClass('hidden');
-  $('#reader-container').addClass('hidden');
-});
+
+// back.addEventListener('click', function() {
+//   $('#journal-container').removeClass('hidden');
+//   $('#reader-container').addClass('hidden');
+// });
 
 function createNewPost(thePost, entry, postarea) {
+
   var removeButton = document.createElement('input');
   removeButton.className = 'btn btn-default';
   removeButton.setAttribute('type', 'button');
