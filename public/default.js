@@ -11,9 +11,7 @@ var back = document.getElementById('back-to-posts');
 
 
 // Allow the user to edit the most recent post when the page loads.
-livePost.addEventListener('click', function(theEvent) {
-
-  // $('#reader-container').removeClass('hidden')
+document.addEventListener('DOMContentLoaded', function(theEvent) {
 
   // var author = document.getElementById('author');
   recent = new XMLHttpRequest();
@@ -36,9 +34,6 @@ livePost.addEventListener('click', function(theEvent) {
         makeLiveEntry(response);
         console.log(response.id)
       }
-
-
-    // $('#reader-container').removeClass('hidden')
     }
   });
 });
@@ -134,48 +129,14 @@ newPost.addEventListener('click', function() {
   xhr.open('POST', '/posts/jed');
   xhr.setRequestHeader('content-type', 'application/json');
   xhr.send(JSON.stringify(thePost));
-
-
-  // console.log(thePost);
-
 })
 
-// livePost.addEventListener('click', function() {
-//   $('#journalContainer').addClass('hidden');
-//   $('#readerContainer').removeClass('hidden');
-//
-//   var xhr = new XMLHttpRequest();
-//   xhr.open('GET', '/posts/recent/user')
-//   xhr.send();
-//
-//   xhr.addEventListener('DOMContentLoaded', function() {
-//     console.log(xhr.response)
-//   })
-// });
 
 back.addEventListener('click', function() {
   $('#journal-container').removeClass('hidden');
   $('#reader-container').addClass('hidden');
 });
 
-function makeLiveEntry(response) {
-  var theJournal = document.getElementById('the-journal');
-  // var entryDiv = document.createElement('div');
-  // entryDiv.setAttribute('class', 'panel panel-default');
-  // //
-  // var entryBody = document.createElement('div');
-  // entryBody.setAttribute('class', 'panel-body entries');
-  //
-  var journalEntry = document.createElement('p');
-  journalEntry.textContent = response.entry;
-
-
-  // livejournal.appendChild(entryDiv);
-  // entryDiv.appendChild(entryBody);
-  // entryBody.appendChild(journalEntry);
-  theJournal.appendChild(journalEntry)
-
-}
 
 function makeEntry(response, entry) {
   var livejournal = document.getElementById('livejournal');
@@ -193,7 +154,6 @@ function makeEntry(response, entry) {
   livejournal.appendChild(entryDiv);
   entryDiv.appendChild(entryBody);
   entryBody.appendChild(journalEntry);
-
 }
 
 function clear(area) {

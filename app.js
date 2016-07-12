@@ -1,7 +1,7 @@
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var app = express();
-// var users = require('./users.js');
+
 var posts = require('./posts.js');
 var cookieParser = require('cookie-parser');
 
@@ -24,9 +24,6 @@ app.post('/sessions/check/:user', function(req, res) {
     activeSessions.id = sessionid;
     sessions.push(activeSessions);
     res.cookie('session', sessionid);
-    console.log('sessions was empty. first session was made');
-    console.log(activeSessions);
-    console.log(sessions);
     res.send();
   }
 
@@ -34,7 +31,7 @@ app.post('/sessions/check/:user', function(req, res) {
 
   sessions.forEach(function(session) {
     if (session.user == req.params.user) {
-      console.log(req.params.user + ' ' + 'already has cookie');
+      // console.log(req.params.user + ' ' + 'already has cookie');
       matched = true
       res.send();
     }
@@ -46,7 +43,7 @@ app.post('/sessions/check/:user', function(req, res) {
     res.cookie('session', sessionid);
   }
   res.send();
-  console.log(sessions);
+  // console.log(sessions);
 })
 
 
@@ -67,8 +64,6 @@ app.post('/posts/:user', function(req, res) {
 
   res.send();
 });
-
-
 
 // Return the lastest post that isn't expired for this user.
 app.get('/posts/recent/:user', function(req, res) {
@@ -96,10 +91,3 @@ var port = (process.env.PORT || 8080);
 app.listen(port, function() {
   console.log('listening on' + port);
 });
-
-// Return posts that haven't yet expired.
-// app.get('/posts/', function(req, res) {
-//   // Get all the valid posts.
-//   var valid = isValid();
-//   res.json(valid);
-// });
