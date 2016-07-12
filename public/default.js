@@ -90,26 +90,8 @@ newPost.addEventListener('click', function() {
   entries.push(thePost.entry)
 
   entries.forEach(function(entry) {
-    var column = document.createElement('div');
-    column.setAttribute('class','col-md-4');
 
-    var div = document.createElement('div');
-    div.setAttribute('class', 'panel panel-default');
-
-    var div2 = document.createElement('div');
-    div2.setAttribute('class', 'panel-body entries');
-
-    // var text = document.createElement('p');
-    var text = document.createElement('textarea');
-    text.className = 'form-control';
-    text.rows = '8'
-
-    text.textContent = thePost.entry;
-
-    postarea.appendChild(column);
-    column.appendChild(div);
-    div.appendChild(div2);
-    div2.appendChild(text);
+    createNewPost(thePost, entry, postarea);
 
     console.log(thePost.id)
   })
@@ -137,8 +119,42 @@ back.addEventListener('click', function() {
   $('#reader-container').addClass('hidden');
 });
 
+function createNewPost(thePost, entry, postarea) {
+  var removeButton = document.createElement('input');
+  removeButton.className = 'btn btn-default';
+  removeButton.setAttribute('type', 'button');
+  removeButton.setAttribute('value', 'Delete Post');
+
+  var form = document.createElement('div');
+  form.className = 'form-group';
+
+  var column = document.createElement('div');
+  column.setAttribute('class','col-md-4');
+
+  var div = document.createElement('div');
+  div.setAttribute('class', 'panel panel-default');
+
+  var div2 = document.createElement('div');
+  div2.setAttribute('class', 'panel-body entries');
+
+  // var text = document.createElement('p');
+  var text = document.createElement('textarea');
+  text.className = 'form-control';
+  text.rows = '8'
+
+  text.textContent = thePost.entry;
+
+  postarea.appendChild(column);
+  column.appendChild(div);
+  div.appendChild(div2);
+  div2.appendChild(text);
+  div2.appendChild(form);
+  form.appendChild(text);
+  div2.appendChild(removeButton);
+}
 
 function makeEntry(response, entry) {
+
   var livejournal = document.getElementById('livejournal');
   clear(livejournal)
   var entryDiv = document.createElement('div');
@@ -149,7 +165,6 @@ function makeEntry(response, entry) {
 
   var journalEntry = document.createElement('p');
   journalEntry.textContent = response.entry;
-
 
   livejournal.appendChild(entryDiv);
   entryDiv.appendChild(entryBody);

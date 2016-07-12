@@ -10,10 +10,14 @@ h1 {
   color: white;
 }
 
+h3 {
+  color: white;
+}
+
 .entries {
   display: block;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 250px;
+  max-height: 250px;
   height: 200px;
   overflow: scroll;
 }
