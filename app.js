@@ -91,11 +91,11 @@ function isValid() {
   return valid;
 }
 
-app.get('/cool', function(req, res) {
-  res.send(cool());
-});
+var port = (process.env.PORT || 8080);
 
-app.listen(5000);
+app.listen(port function() {
+  console.log('listening on' + port);
+});
 
 // Return posts that haven't yet expired.
 // app.get('/posts/', function(req, res) {
