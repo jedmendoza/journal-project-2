@@ -10,7 +10,7 @@ If user begins typing, a new journal entry will be created with specfic entry ID
 Clicking new post will save previous post and create a new journal entry.
 ![alt tag](https://cloud.githubusercontent.com/assets/19392816/16776362/d47e55ea-4819-11e6-95d5-af33957449d4.png)
 
-Technololgies used:
+### Technololgies used:
 1. Node.js
 2. express
 3. cookie-parser
