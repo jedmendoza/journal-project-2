@@ -1,4 +1,3 @@
-var cool = require('cool-ascii-faces');
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var app = express();
